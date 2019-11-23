@@ -1,0 +1,11 @@
+<div class="center">
+    <h1>
+        Avatar portal
+    </h1>
+    <h2>First, login using your Avatar</h2>
+    <div class="qrcode">
+        <qrcode [qrdata]="'123'" usesvg="true" [level]="'M'" size="256"></qrcode>
+    </div>
+    <button mat-raised-button (click)="login()">Login</button>
+
+</div>
