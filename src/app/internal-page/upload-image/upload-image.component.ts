@@ -37,14 +37,15 @@ export class UploadImageComponent implements OnInit {
   }
 
   onSubmit() {
-    /*const formData = new FormData();
+    const formData = new FormData();
     formData.append('file', this.fileData);
-    this.http.post('url/to/your/api', formData)
+    console.log(formData)
+    this.http.post('https://mvs-avatar-portal.firebaseapp.com/api/mst/hallo', formData)
       .subscribe(res => {
         console.log(res);
-        this.uploadedFilePath = res.data.filePath;
+        //this.uploadedFilePath = res.data.filePath;
         alert('SUCCESS !!');
-      })*/
+      })
   }
 
 }

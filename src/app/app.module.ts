@@ -6,10 +6,11 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { InternalPageComponent } from './internal-page/internal-page.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatExpansionModule, MatFormFieldModule, MatSidenavModule, MatListModule, MatButtonModule } from '@angular/material';
 import { TopbarComponent } from './internal-page/topbar/topbar.component';
 import { UploadImageComponent } from './internal-page/upload-image/upload-image.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MstComponent } from './internal-page/mst/mst.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     InternalPageComponent,
     LandingPageComponent,
     TopbarComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    MstComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
+    MatExpansionModule,
+    MatFormFieldModule,
     HttpClientModule,
   ],
   providers: [],
