@@ -1,0 +1,1 @@
+export const EXPLORER_URL = 'https://explorer.mvs.org/api/';
