@@ -25,6 +25,14 @@
         "function": "list"
       },
       {
+        "source": "/api/mst/*",
+        "function": "upload"
+      },
+      {
+        "source": "/mst/*",
+        "function": "show"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
