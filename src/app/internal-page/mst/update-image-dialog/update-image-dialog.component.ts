@@ -1,18 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-upload-image',
-  templateUrl: './upload-image.component.html',
-  styleUrls: ['./upload-image.component.scss']
+  selector: 'app-update-image-dialog',
+  templateUrl: './update-image-dialog.component.html',
+  styleUrls: ['./update-image-dialog.component.scss']
 })
-export class UploadImageComponent implements OnInit {
+export class UpdateImageDialogComponent implements OnInit {
 
   fileData: File = undefined;
   previewUrl: any = undefined;
   uploadedFilePath: string = undefined;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    public dialogRef: MatDialogRef<UpdateImageDialogComponent>,
+  ) { }
 
   ngOnInit() {
   }
@@ -45,6 +49,7 @@ export class UploadImageComponent implements OnInit {
         console.log(res);
         //this.uploadedFilePath = res.data.filePath;
         alert('SUCCESS !!');
+        this.dialogRef.close();
       })
   }
 

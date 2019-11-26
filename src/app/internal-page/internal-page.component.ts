@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class InternalPageComponent implements OnInit {
 
   mstList: Array<any>
+  selected = -1
 
   constructor() {
     this.mstList = [
@@ -16,6 +17,10 @@ export class InternalPageComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  setSelected = (index: number) => {
+    this.selected = index
   }
 
 }

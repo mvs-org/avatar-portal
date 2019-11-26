@@ -6,11 +6,11 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { InternalPageComponent } from './internal-page/internal-page.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatExpansionModule, MatFormFieldModule, MatSidenavModule, MatListModule, MatButtonModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatExpansionModule, MatFormFieldModule, MatDialogModule, MatSidenavModule, MatListModule, MatButtonModule } from '@angular/material';
 import { TopbarComponent } from './internal-page/topbar/topbar.component';
-import { UploadImageComponent } from './internal-page/upload-image/upload-image.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MstComponent } from './internal-page/mst/mst.component';
+import { UpdateImageDialogComponent } from './internal-page/mst/update-image-dialog/update-image-dialog.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +18,8 @@ import { MstComponent } from './internal-page/mst/mst.component';
     InternalPageComponent,
     LandingPageComponent,
     TopbarComponent,
-    UploadImageComponent,
-    MstComponent
+    MstComponent,
+    UpdateImageDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +31,15 @@ import { MstComponent } from './internal-page/mst/mst.component';
     MatIconModule,
     MatExpansionModule,
     MatFormFieldModule,
+    MatDialogModule,
     HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ ],
+  bootstrap: [
+    AppComponent
+  ],
+  entryComponents: [
+    UpdateImageDialogComponent
+  ],
 })
 export class AppModule { }

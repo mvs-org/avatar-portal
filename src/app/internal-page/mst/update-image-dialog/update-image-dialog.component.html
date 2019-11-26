@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="form-group">
+        <div class="form-group" *ngIf="!fileData">
             <button mat-raised-button class="upload-btn">
                 <label>
                     <!--i class="material-icons">file_upload</i-->
@@ -15,7 +15,15 @@
                 <img [src]="previewUrl" class="preview-image light" />
                 <img [src]="previewUrl" class="preview-image dark" />
             </div>
-            <button mat-raised-button (click)="onSubmit()">Submit</button>
+            <div class="row right">
+                <button mat-raised-button class="upload-btn">
+                    <label>
+                        Change
+                        <input class="none" type="file" (change)="fileProgress($event)" />
+                    </label>
+                </button>
+                <button color="primary" mat-raised-button (click)="onSubmit()">Submit</button>
+            </div>
         </div>
     </div>
 </div>

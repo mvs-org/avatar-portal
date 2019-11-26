@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UploadImageComponent } from './upload-image.component';
+import { UpdateImageDialogComponent } from './update-image-dialog.component';
 
-describe('UploadImageComponent', () => {
-  let component: UploadImageComponent;
-  let fixture: ComponentFixture<UploadImageComponent>;
+describe('UpdateImageDialogComponent', () => {
+  let component: UpdateImageDialogComponent;
+  let fixture: ComponentFixture<UpdateImageDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UploadImageComponent ]
+      declarations: [ UpdateImageDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UploadImageComponent);
+    fixture = TestBed.createComponent(UpdateImageDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

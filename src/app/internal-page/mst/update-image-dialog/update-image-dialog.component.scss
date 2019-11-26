@@ -8,6 +8,7 @@ button label {
 
 .preview-image {
     height: 300px;
+    padding: 30px;
 }
 
 .dark {
@@ -16,8 +17,18 @@ button label {
 
 .upload-btn {
     padding: 0;
+    height: 36px;
+    margin: 10px;
+}
+
+.upload-btn .material-icons {
+    padding: 20px;
 }
 
 .upload-btn label {
     padding: 20px;
+}
+
+.right {
+    text-align: right;
 }

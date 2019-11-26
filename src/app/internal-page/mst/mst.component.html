@@ -1,4 +1,4 @@
-<mat-expansion-panel [disabled]="true" [expanded]="expanded">
+<mat-expansion-panel [disabled]="true" [expanded]="selected == index">
     <mat-expansion-panel-header>
         <mat-panel-title>
             <img class="mst-logo" [src]="'/assets/icon/default_mst.png'">
@@ -9,9 +9,9 @@
         <button mat-button color="primary" (click)="set()">Set</button>
         <button mat-button color="accent" (click)="set()">Update</button>
         <button mat-button color="warn" (click)="set()">Delete</button>
-        <button mat-button (click)="expanded = !expanded">
-            <i *ngIf="!expanded" class="material-icons">keyboard_arrow_down</i>
-            <i *ngIf="expanded" class="material-icons">keyboard_arrow_up</i>
+        <button mat-button (click)="select()">
+            <i *ngIf="selected != index" class="material-icons">keyboard_arrow_down</i>
+            <i *ngIf="selected == index" class="material-icons">keyboard_arrow_up</i>
         </button>
     </mat-expansion-panel-header>
     <h4>Initial total supply: {{mst.attachment.quantity}}</h4>

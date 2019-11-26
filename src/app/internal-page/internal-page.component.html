@@ -1,6 +1,5 @@
 <app-topbar></app-topbar>
 <br>
 <mat-accordion>
-    <app-mst *ngFor="let mst of mstList" [mst]="mst"></app-mst>
+    <app-mst *ngFor="let mst of mstList; let index = index" [mst]="mst" [index]="index" [selected]="selected" (selectedChanged)="setSelected($event)"></app-mst>
 </mat-accordion>
-<app-upload-image></app-upload-image>
