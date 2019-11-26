@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { UploadService } from  '../../../upload.service'
+import { FormBuilder, FormGroup } from  '@angular/forms'
 
 @Component({
   selector: 'app-update-image-dialog',
@@ -9,16 +10,27 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class UpdateImageDialogComponent implements OnInit {
 
-  fileData: File = undefined;
-  previewUrl: any = undefined;
-  uploadedFilePath: string = undefined;
+  fileData: File = undefined
+  previewUrl: any = undefined
+  uploadedFilePath: string = undefined
+  uploading = false
+  loadingValue = 0
+  form: FormGroup
 
   constructor(
-    private http: HttpClient,
+    private uploadService: UploadService,
+    private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<UpdateImageDialogComponent>,
-  ) { }
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) { 
+    this.fileData = data.icon
+    this.preview()
+  }
 
   ngOnInit() {
+    this.form = this.formBuilder.group({
+      avatar: ['']
+    });
   }
 
   fileProgress(fileInput: any) {
@@ -41,16 +53,29 @@ export class UpdateImageDialogComponent implements OnInit {
   }
 
   onSubmit() {
+    this.uploading = true
+    this.loadingValue = 0
     const formData = new FormData();
-    formData.append('file', this.fileData);
+    //formData.append('file', this.fileData);
+    formData.append('file', this.form.get('avatar').value);
     console.log(formData)
-    this.http.post('https://mvs-avatar-portal.firebaseapp.com/api/mst/hallo', formData)
+    this.uploadService.upload(this.fileData).subscribe(
+      (res) => {
+        console.log(res)
+        this.loadingValue
+        if(res.message == 100) {
+          this.dialogRef.close()
+        }
+      },
+      (err) => console.log(err)
+    );
+    /*this.http.post('https://mvs-avatar-portal.firebaseapp.com/api/mst/hallo', formData)
       .subscribe(res => {
         console.log(res);
         //this.uploadedFilePath = res.data.filePath;
         alert('SUCCESS !!');
         this.dialogRef.close();
-      })
+      })*/
   }
 
 }

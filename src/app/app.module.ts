@@ -6,11 +6,12 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { InternalPageComponent } from './internal-page/internal-page.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatExpansionModule, MatFormFieldModule, MatDialogModule, MatSidenavModule, MatListModule, MatButtonModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatExpansionModule, MatFormFieldModule, MatProgressBarModule, MatDialogModule, MatSidenavModule, MatListModule, MatButtonModule } from '@angular/material';
 import { TopbarComponent } from './internal-page/topbar/topbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MstComponent } from './internal-page/mst/mst.component';
 import { UpdateImageDialogComponent } from './internal-page/mst/update-image-dialog/update-image-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,8 +32,11 @@ import { UpdateImageDialogComponent } from './internal-page/mst/update-image-dia
     MatIconModule,
     MatExpansionModule,
     MatFormFieldModule,
+    MatProgressBarModule,
     MatDialogModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [ ],
   bootstrap: [

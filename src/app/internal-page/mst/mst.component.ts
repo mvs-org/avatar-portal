@@ -13,7 +13,7 @@ export class MstComponent implements OnInit {
   @Input() index: number
   @Input() selected: number
 
-  expanded = false
+  fileData: File = undefined;
 
   @Output() selectedChanged: EventEmitter<number> = new EventEmitter<number>()
 
@@ -24,9 +24,13 @@ export class MstComponent implements OnInit {
   ngOnInit() {
   }
 
-  set() {
+  set(fileInput: any) {
+    this.fileData = <File>fileInput.target.files[0];
     const dialogRef = this.dialog.open(UpdateImageDialogComponent, {
-      data: this.mst
+      data: {
+        'symbol': this.mst,
+        'icon': this.fileData,
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
