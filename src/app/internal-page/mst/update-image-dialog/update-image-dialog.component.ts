@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { UploadService } from  '../../../upload.service'
-import { FormBuilder, FormGroup } from  '@angular/forms'
 
 @Component({
   selector: 'app-update-image-dialog',
@@ -15,27 +14,23 @@ export class UpdateImageDialogComponent implements OnInit {
   uploadedFilePath: string = undefined
   uploading = false
   loadingValue = 0
-  form: FormGroup
 
   constructor(
     private uploadService: UploadService,
-    private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<UpdateImageDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { 
+  ) {
     this.fileData = data.icon
     this.preview()
   }
 
-  ngOnInit() {
-    this.form = this.formBuilder.group({
-      avatar: ['']
-    });
-  }
+  ngOnInit() { }
 
   fileProgress(fileInput: any) {
-    this.fileData = <File>fileInput.target.files[0];
-    this.preview();
+    if(fileInput) {
+      this.fileData = <File>fileInput.target.files[0];
+      this.preview();
+    }
   }
 
   preview() {
@@ -56,13 +51,11 @@ export class UpdateImageDialogComponent implements OnInit {
     this.uploading = true
     this.loadingValue = 0
     const formData = new FormData();
-    //formData.append('file', this.fileData);
-    formData.append('file', this.form.get('avatar').value);
-    console.log(formData)
-    this.uploadService.upload(this.fileData).subscribe(
+    formData.append('file', this.fileData);
+    //formData.append('file', this.form.get('avatar').value);
+    this.uploadService.upload('mst/' + this.data.symbol, this.fileData).subscribe(
       (res) => {
-        console.log(res)
-        this.loadingValue
+        this.loadingValue = res.message
         if(res.message == 100) {
           this.dialogRef.close()
         }

@@ -1,20 +1,20 @@
 <div class="container">
-    <div class="row" *ngIf="!uploading">
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div>
             <div *ngIf="previewUrl">
                 <img [src]="previewUrl" class="preview-image light" />
                 <img [src]="previewUrl" class="preview-image dark" />
             </div>
             <div class="row right">
-                <button mat-raised-button class="upload-btn">
+                <button [disabled]="uploading" mat-raised-button class="upload-btn">
                     <label>
                         Change
-                        <input #input class="none" type="file" (change)="fileProgress($event)" />
+                        <input #input class="none" type="file" accept=".png" (change)="fileProgress($event)" />
                     </label>
                 </button>
-                <button color="primary" mat-raised-button (click)="onSubmit()">Submit</button>
+                <button [disabled]="uploading" color="primary" mat-raised-button (click)="onSubmit()">Submit</button>
             </div>
-        </form>
+        </div>
     </div>
     <mat-progress-bar *ngIf="uploading" [color]="primary" [mode]="determinate" [value]="loadingValue"></mat-progress-bar>
 </div>

@@ -18,3 +18,17 @@ mat-panel-description {
 button label {
     cursor: pointer;
 }
+
+.upload-btn {
+    padding: 0;
+    height: 36px;
+    margin: 10px;
+}
+
+.upload-btn .material-icons {
+    padding: 20px;
+}
+
+.upload-btn label {
+    padding: 20px;
+}

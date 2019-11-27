@@ -25,17 +25,19 @@ export class MstComponent implements OnInit {
   }
 
   set(fileInput: any) {
-    this.fileData = <File>fileInput.target.files[0];
-    const dialogRef = this.dialog.open(UpdateImageDialogComponent, {
-      data: {
-        'symbol': this.mst,
-        'icon': this.fileData,
-      }
-    });
+    if(fileInput) {
+      this.fileData = <File>fileInput.target.files[0];
+      const dialogRef = this.dialog.open(UpdateImageDialogComponent, {
+        data: {
+          'symbol': this.mst.attachment.symbol,
+          'icon': this.fileData,
+        }
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
+    }
   }
 
   select() {
