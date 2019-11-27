@@ -19,6 +19,7 @@ export class UploadService {
       observe: 'events'
     }).pipe(map((event) => {
 
+      console.log(data)
       switch (event.type) {
 
         case HttpEventType.UploadProgress:

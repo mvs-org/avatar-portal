@@ -5,16 +5,26 @@
                 <img [src]="previewUrl" class="preview-image light" />
                 <img [src]="previewUrl" class="preview-image dark" />
             </div>
-            <div class="row right">
+            <!--div class="row right">
                 <button mat-raised-button class="upload-btn">
                     <label>
                         Change
-                        <input #input class="none" type="file" (change)="fileProgress($event)" />
+                        <input #file class="none" name="file" type="file" (change)="fileProgress($event)" />
                     </label>
                 </button>
                 <button color="primary" mat-raised-button (click)="onSubmit()">Submit</button>
-            </div>
+            </div-->
         </form>
     </div>
     <mat-progress-bar *ngIf="uploading" [color]="primary" [mode]="determinate" [value]="loadingValue"></mat-progress-bar>
+
+    <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+    <button type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+        Upload an Image
+    </button>
+
+
+
+
+
 </div>

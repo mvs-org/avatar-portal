@@ -2,6 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { UploadService } from  '../../../upload.service'
 import { FormBuilder, FormGroup } from  '@angular/forms'
+import { FileUploader } from 'ng2-file-upload';
+
+const URL = 'https://mvs-avatar-portal.firebaseapp.com/api/mst/hallo';
 
 @Component({
   selector: 'app-update-image-dialog',
@@ -27,14 +30,24 @@ export class UpdateImageDialogComponent implements OnInit {
     this.preview()
   }
 
-  ngOnInit() {
+  /*ngOnInit() {
     this.form = this.formBuilder.group({
-      avatar: ['']
+      file: ['']
     });
+  }*/
+
+  public uploader: FileUploader = new FileUploader({ url: URL, itemAlias: 'file' });
+  ngOnInit() {
+    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      console.log('ImageUpload:uploaded:', item, status, response);
+      alert('File uploaded successfully');
+    };
   }
 
   fileProgress(fileInput: any) {
-    this.fileData = <File>fileInput.target.files[0];
+    console.log(fileInput)
+    this.fileData = fileInput.target.files[0];
     this.preview();
   }
 
@@ -56,8 +69,10 @@ export class UpdateImageDialogComponent implements OnInit {
     this.uploading = true
     this.loadingValue = 0
     const formData = new FormData();
-    //formData.append('file', this.fileData);
-    formData.append('file', this.form.get('avatar').value);
+    formData.append('file', this.fileData);
+    console.log(this.fileData)
+    console.log(formData)
+    //formData.append('file', this.form.get('file').value);
     console.log(formData)
     this.uploadService.upload(this.fileData).subscribe(
       (res) => {

@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MstComponent } from './internal-page/mst/mst.component';
 import { UpdateImageDialogComponent } from './internal-page/mst/update-image-dialog/update-image-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LandingPageComponent,
     TopbarComponent,
     MstComponent,
-    UpdateImageDialogComponent
+    UpdateImageDialogComponent,
+    FileSelectDirective,
   ],
   imports: [
     BrowserModule,
